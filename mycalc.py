@@ -9,51 +9,59 @@ for i,x in enumerate(splited_line):
         a = int (splited_line[i-1]) 
         b = int (splited_line[i+1])
         c = a ** b
+        print(a, b, c)
 
         splited_line.pop(i-1)
         splited_line.pop(i-1)
         splited_line.pop(i-1)
         splited_line.insert(i-1,c)
+        print(splited_line)
 
 for i,x in enumerate(splited_line):
     if x == '/':
         a = int (splited_line[i-1])
         b = int (splited_line[i+1])
         c = a / b
+        print(a, b, c)
 
         splited_line.pop(i-1)
         splited_line.pop(i-1)
         splited_line.pop(i-1)
         splited_line.insert(i-1,c)
+        print(splited_line)
 
 for i,x in enumerate(splited_line):
     if x == '*':
         a = int (splited_line[i-1])
         b = int (splited_line[i+1])
         c = a * b
+        print(a, b, c)
 
         splited_line.pop(i-1)
         splited_line.pop(i-1)
         splited_line.pop(i-1)
         splited_line.insert(i-1,c)
-
+        print(splited_line)
 
 for i,x in enumerate(splited_line):
     if x == '+':
         a = int (splited_line[i-1])
         b = int (splited_line[i+1])
         c = a + b
+        print(a, b, c)
 
         splited_line.pop(i-1)
         splited_line.pop(i-1)
         splited_line.pop(i-1)
         splited_line.insert(i-1,c)
+        print(splited_line)
 
 for i,x in enumerate(splited_line):
     if x == '-':
         a = int (splited_line[i-1])
         b = int (splited_line[i+1])
         c = a - b
+        print(a, b, c)
 
         splited_line.pop(i-1)
         splited_line.pop(i-1)

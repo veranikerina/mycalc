@@ -4,7 +4,7 @@
 
 # считать строчку от пользователя
 instr = input('Что посчитать? ')
-print(instr)
+
 
 # почистить строку
 # "-2 + 3.5 * 2 - 3 ^ 2"   ->   "-2+3.5*2-3^2"
@@ -20,9 +20,9 @@ instr = instr.replace(' ','')
 
 """
 hp_ops = tuple('^')
-ms_ops = ('*', '/')
+mp_ops = ('*', '/')
 lp_ops = tuple('+-')
-supported_ops = hp_ops + ms_ops + lp_ops
+supported_ops = hp_ops + mp_ops + lp_ops
 digit_chars = tuple('012345789.-')
 
 actions = list()
@@ -30,7 +30,6 @@ d = dict()
 d ['opr']= 'First' # ключ операция которую будем записывать
 d ['val']= '' # ключ под значение чисел - пустая строка
 actions.append(d)
-print(actions)
 
 # 2+3.5*2-3^2
 # [{'opr': '', 'val': '2'},{'opr': +, 'val': 3.5},{'opr': *, 'val': 2},...]
@@ -42,10 +41,8 @@ for i,letter in enumerate(instr):
 
     elif letter in digit_chars:
         '''блок под числа'''
-        print('in val')
         actions[-1]['val'] += letter #значение val положить в последний элемент списка
 
-print(actions)
 
 #вычислить операции 1го приоритета (возведение в степень)
 """
@@ -57,7 +54,7 @@ print(actions)
 """
 i = 0
 actions.reverse()
-print(actions)
+
 while i < len(actions):
     '''проверить операцию в действии на соответствие оперпции 
     первого приоритета если она не соответствует, то ничего 
@@ -98,18 +95,18 @@ while i < len(actions):
     """
     action = actions[i]
     operation = action.get('opr')
-    if operation in ms_ops:
+    if operation in mp_ops:
         if float(action.get('val')) == 0 and operation == '/':
             result = 'Inf'
             error = True
         else:
-            eval_str = (actions[i-1].get('val') + operation + action.get('val'))
+            eval_str = actions[i-1].get('val') + operation + action.get('val')
             pre_res = eval(eval_str)
             actions[i-1]['val'] = str(pre_res)
         actions.pop(i)
     else:
         i += 1
-print(actions)
+
 #вычислить операции 3го приоритета (сложение и вычитание)
 #-2+7-9= -4
 if not error:
@@ -121,6 +118,5 @@ if not error:
             result = str(eval(var_A + operation + var_B))
         else:
             result = var_B
-        print(result)
 #вывести результат
 print('Результат: {}'.format(result))
